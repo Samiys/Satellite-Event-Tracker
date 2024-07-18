@@ -2,7 +2,7 @@ package com.example.sateventtracker.controller;
 
 import com.example.sateventtracker.model.Event;
 import com.example.sateventtracker.service.EventService;
-import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +19,9 @@ public class EventController {
     }
 
     @PostMapping
-    public Event createEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+    public ResponseEntity<Event> createEvent(@Valid @RequestBody Event event) {
+        Event createdEvent = eventService.createEvent(event);
+        return ResponseEntity.status(201).body(createdEvent);
     }
 
     @GetMapping("/findBySatelliteName")
