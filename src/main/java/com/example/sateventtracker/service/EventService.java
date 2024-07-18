@@ -23,4 +23,7 @@ public class EventService {
         return eventRepository.findBySatelliteName(satelliteName);
     }
 
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
 }
