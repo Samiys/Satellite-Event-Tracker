@@ -2,6 +2,7 @@ package com.example.sateventtracker.service;
 
 import com.example.sateventtracker.model.Event;
 import com.example.sateventtracker.repository.EventRepository;
+import exception.EventNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,19 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    public List<Event> getEventBySatelliteName(String satelliteName) {
-        return eventRepository.findBySatelliteName(satelliteName);
+    public List<Event> getEventsBySatelliteName(String satelliteName) {
+        List<Event> events = eventRepository.findBySatelliteName(satelliteName);
+        if (events.isEmpty()) {
+            throw new EventNotFoundException("No events found for satellite name: " + satelliteName);
+        }
+        return events;
     }
 
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        List<Event> events = eventRepository.findAll();
+        if (events.isEmpty()) {
+            throw new EventNotFoundException("No events found");
+        }
+        return events;
     }
 }

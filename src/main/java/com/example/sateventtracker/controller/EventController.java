@@ -25,13 +25,8 @@ public class EventController {
 
     @GetMapping("/findBySatelliteName")
     public ResponseEntity<List<Event>> getEventBySatelliteName(@RequestParam String satelliteName) {
-        System.out.println("Controller received request to find event by satelliteName: " + satelliteName);
-        List<Event> events = eventService.getEventBySatelliteName(satelliteName);
-        if (!events.isEmpty()) {
-            return ResponseEntity.ok(events);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+        List<Event> events = eventService.getEventsBySatelliteName(satelliteName);
+        return ResponseEntity.ok(events);
     }
 
     @GetMapping
