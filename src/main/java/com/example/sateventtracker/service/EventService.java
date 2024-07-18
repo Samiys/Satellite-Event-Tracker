@@ -1,6 +1,10 @@
 package com.example.sateventtracker.service;
 
+import com.example.sateventtracker.model.Event;
+import com.example.sateventtracker.repository.EventRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EventService {
@@ -13,6 +17,10 @@ public class EventService {
 
     public Event createEvent(Event event) {
         return eventRepository.save(event);
+    }
+
+    public List<Event> getEventBySatelliteName(String satelliteName) {
+        return eventRepository.findBySatelliteName(satelliteName);
     }
 
 }
