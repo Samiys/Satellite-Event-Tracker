@@ -5,7 +5,7 @@ import com.example.sateventtracker.service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import validator.EventValidator;
+import com.example.sateventtracker.validator.EventValidator;
 
 import java.util.List;
 import java.util.Map;

@@ -2,7 +2,7 @@ package com.example.sateventtracker.service;
 
 import com.example.sateventtracker.model.Event;
 import com.example.sateventtracker.repository.EventRepository;
-import exception.EventNotFoundException;
+import com.example.sateventtracker.exception.EventNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

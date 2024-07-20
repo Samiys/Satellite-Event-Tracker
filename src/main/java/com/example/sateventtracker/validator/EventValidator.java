@@ -1,4 +1,4 @@
-package validator;
+package com.example.sateventtracker.validator;
 
 import com.example.sateventtracker.model.Event;
 
