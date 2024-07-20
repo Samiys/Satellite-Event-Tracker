@@ -68,18 +68,29 @@ To start the application, run the following command:
 mvn spring-boot:run
 ```
 
-### Example
-Provide example commands or instructions on how to use your project:
+## Example
+
+Create a new event
 ```bash
 curl -X POST http://localhost:7000/api/events -H "Content-Type: application/json" -d '{"date":"2023-07-20T10:00:00","description":"Event Description","priority":"High","satelliteName":"SAT-1"}'
+```
+
+Get all events
+```bash
 curl http://localhost:7000/api/events
 ```
+
+Get events by satellite name
+```bash
+curl http://localhost:7000/api/events/findBySatelliteName?satelliteName=SAT-1
+````
 
 ## Configuration
 Configuration options can be set in the `src/main/resources/application.properties` file.
 
 ## Testing
 To run tests, use the following command:
+
 ```bash
 mvn test
 ```
