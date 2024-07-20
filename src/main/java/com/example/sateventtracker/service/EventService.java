@@ -3,9 +3,11 @@ package com.example.sateventtracker.service;
 import com.example.sateventtracker.model.Event;
 import com.example.sateventtracker.repository.EventRepository;
 import com.example.sateventtracker.exception.EventNotFoundException;
+import com.example.sateventtracker.validator.EventValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EventService {
@@ -17,6 +19,10 @@ public class EventService {
     }
 
     public Event createEvent(Event event) {
+        Map<String, String> errors = EventValidator.validateEvent(event);
+        if (!errors.isEmpty()) {
+            throw new IllegalArgumentException("Validation failed: " + errors.toString());
+        }
         return eventRepository.save(event);
     }
 

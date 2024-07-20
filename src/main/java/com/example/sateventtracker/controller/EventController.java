@@ -22,11 +22,6 @@ public class EventController {
 
     @PostMapping
     public ResponseEntity<?> createEvent(@RequestBody Event event) {
-        Map<String, String> errors = EventValidator.validateEvent(event);
-        if (!errors.isEmpty()) {
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-        }
-
         try {
             Event createdEvent = eventService.createEvent(event);
             return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
